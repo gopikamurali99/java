@@ -1,0 +1,35 @@
+import java.util.*;
+class Main {
+    public static Map<Integer, Integer> sumUptoTarget(int[] arr,int target){
+        int n = arr.length;
+        int left = 0;
+        int right = n-1;
+        Map<Integer,Integer> pairs = new HashMap<>() ;
+        while(left<right){
+            int sum =arr[left]+arr[right];
+            if(sum==target){
+                pairs.put(arr[left], arr[right]);
+                left++;
+                right--;
+                
+            }else if(sum>target){
+               right--;
+            }else{
+                left++;
+            }
+           
+        
+        }  
+        return pairs;
+         
+    }
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        int[] arr = {1,2,3,4,5,6,8};
+        int target = 6;
+   Map<Integer, Integer> result = sumUptoTarget(arr, target);
+        for (Map.Entry<Integer, Integer> entry : result.entrySet()) {
+            System.out.println(entry.getKey() + ", " + entry.getValue());
+        }
+    }
+}
